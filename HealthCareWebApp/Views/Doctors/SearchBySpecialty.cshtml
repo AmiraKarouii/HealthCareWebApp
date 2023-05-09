@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<HealthCareWebApp.Models.Doctor>
+
+<h2>Search Doctors by Specialty</h2>
+
+<form asp-controller="Doctor" asp-action="SearchBySpecialty" method="get">
+    <div class="form-group">
+        <label for="specialty">Specialty:</label>
+        <input type="text" class="form-control" id="specialty" name="specialty">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model != null)
+{
+    <h3>Doctors:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var doctor in Model)
+            {
+                <tr>
+                    <td>@doctor.Name</td>
+                    <td>@doctor.ContactInfo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
